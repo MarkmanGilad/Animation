@@ -6,29 +6,29 @@ pygame.init()
 
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Reversi')
+pygame.display.set_caption('Game')
 clock = pygame.time.Clock()
-screen.fill(LIGHTGRAY)
 
-space_ship = pygame.image.load("img/space_ship.png")
-space_ship = pygame.transform.scale(space_ship, (40, 40))
 
-x, y = 50, 50
-dx, dy = 1, 1
-    
+spaceShip = pygame.image.load("img/space_ship.png")
+spaceShip = pygame.transform.scale(spaceShip, (50,50))
+x, y = 200,300
+dx, dy = 4,-2
+
 run = True
 while (run):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-
-    screen.fill(LIGHTGRAY)
-
-    screen.blit(space_ship, (x,y))
     
-    x = (x + dx) % WIDTH
-    # y = (y + dy) % HEIGHT
-        
+    screen.fill(LIGHTGRAY)
+    screen.blit(spaceShip,(x,y))
+    x = x + dx
+    y = y + dy
+    
+    if x > 800:
+        x = 0
+
     pygame.display.update()
     clock.tick(FPS)
 

@@ -1,7 +1,8 @@
-# Animation
-
 import pygame
 from Graphics import *
+from SpaceShip import SpaceShip
+
+
 pygame.init()
 
 
@@ -10,12 +11,11 @@ pygame.display.set_caption('Reversi')
 clock = pygame.time.Clock()
 screen.fill(LIGHTGRAY)
 
-space_ship = pygame.image.load("img/space_ship.png")
-space_ship = pygame.transform.scale(space_ship, (40, 40))
 
-x, y = 50, 50
-dx, dy = 1, 1
-    
+space_ship = SpaceShip("img/space_ship.png", (100,100)) 
+space_ship_Group = pygame.sprite.GroupSingle(space_ship)
+
+
 run = True
 while (run):
     for event in pygame.event.get():
@@ -24,12 +24,9 @@ while (run):
 
     screen.fill(LIGHTGRAY)
 
-    screen.blit(space_ship, (x,y))
-    
-    x = (x + dx) % WIDTH
-    # y = (y + dy) % HEIGHT
-        
+    # screen.blit(space_ship, (x,y))
+    space_ship_Group.update()
+    space_ship_Group.draw(screen)    
     pygame.display.update()
     clock.tick(FPS)
-
 
