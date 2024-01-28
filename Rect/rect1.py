@@ -32,13 +32,12 @@ while (run):
             run = False
 
     screen.fill(LIGHTGRAY)
-
-    # screen.blit(space_ship, (x,y))
     
     x = (x + dx) % WIDTH
     y = (y + dy) % HEIGHT
     space_ship_rect.center = x, y
     screen.blit(space_ship, space_ship_rect)    
-    pygame.display.update()
+    pygame.display.flip()
     clock.tick(FPS)
 
+pygame.quit()

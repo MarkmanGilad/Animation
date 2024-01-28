@@ -1,3 +1,12 @@
+############# Rect #####################
+# x,y
+# top, left, bottom, right
+# topleft, bottomleft, topright, bottomright
+# midtop, midleft, midbottom, midright
+# center, centerx, centery
+# size, width, height
+# w,h
+
 import pygame
 from Graphics import *
 import math
@@ -17,10 +26,6 @@ space_ship = pygame.image.load("img/spacecraft.png")
 space_ship = pygame.transform.scale(space_ship, (50, 50))
 space_ship = pygame.transform.rotate(space_ship, -90)
 space_ship_rect = space_ship.get_rect()
-sun = pygame.image.load("img/sun.png")
-sun = pygame.transform.scale(sun, (100, 100))
-sun_rect = sun.get_rect(center=(700,100))
-
     
 run = True
 while (run):
@@ -41,8 +46,7 @@ while (run):
                 
 
     screen.fill(LIGHTGRAY)
-    screen.blit(sun, sun_rect)
-
+        
     x += (math.cos(angle/360 * 2 * math.pi) * speed)
     x = x % WIDTH
     y -= (math.sin(math.radians(angle)) * speed)
@@ -51,11 +55,9 @@ while (run):
     space_ship_rotated = pygame.transform.rotate(space_ship, angle=angle)
     space_ship_rect = space_ship.get_rect()
     space_ship_rect.center = x, y
-    screen.blit(space_ship_rotated, space_ship_rect)    
     
-    if space_ship_rect.colliderect(sun_rect):
-        screen.fill('red')
-
-    pygame.display.update()
+    screen.blit(space_ship_rotated, space_ship_rect)    
+    pygame.display.flip()
     clock.tick(FPS)
 
+pygame.quit()

@@ -11,8 +11,9 @@ pygame.display.set_caption('Reversi')
 clock = pygame.time.Clock()
 screen.fill(LIGHTGRAY)
 
-
-space_ship = SpaceShip("img/space_ship.png", (100,100)) 
+space_ship_img = pygame.image.load("img/spacecraft.png")
+space_ship_img = pygame.transform.scale(space_ship_img, (60, 60))
+space_ship = SpaceShip(space_ship_img, (200,599)) 
 space_ship_Group = pygame.sprite.GroupSingle(space_ship)
 
 
@@ -23,9 +24,8 @@ while (run):
             run = False
 
     screen.fill(LIGHTGRAY)
-
-    # screen.blit(space_ship, (x,y))
-    space_ship_Group.update()
+    
+    space_ship_Group.update(1,0)
     space_ship_Group.draw(screen)    
     pygame.display.update()
     clock.tick(FPS)
