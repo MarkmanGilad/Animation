@@ -1,10 +1,8 @@
 import pygame
 from Graphics import *
 from SpaceShip import SpaceShip
-from Sun import Sun
 
 pygame.init()
-
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Reversi')
@@ -15,15 +13,8 @@ speed_x, speed_y = 0, 0
 
 space_ship_img = pygame.image.load("img/spacecraft.png")
 space_ship_img = pygame.transform.scale(space_ship_img, (60, 60))
-space_ship_Group = pygame.sprite.Group()
-
-sun = Sun()
-sun_Group = pygame.sprite.GroupSingle(sun)
-
-for i in range(5):
-    for j in range(3):
-        space_ship = SpaceShip(space_ship_img, (100*i,599-j*80)) 
-        space_ship_Group.add(space_ship)
+space_ship = SpaceShip(space_ship_img) 
+space_ship.rect.midbottom = (400,599)
 
 
 run = True
@@ -44,12 +35,10 @@ while (run):
                 speed_x, speed_y = 0, 0
 
     screen.fill(LIGHTGRAY)
-    sun_Group.update()
-    sun_Group.draw(screen)
     
-    space_ship_Group.update(speed_x,speed_y)
-    space_ship_Group.draw(screen)
-    pygame.sprite.groupcollide(sun_Group, space_ship_Group, False, True)
+    space_ship.move(speed_x,speed_y)
+    space_ship.draw(screen)
+     
     pygame.display.update()
     clock.tick(FPS)
 

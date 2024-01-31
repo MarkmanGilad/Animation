@@ -23,7 +23,7 @@ x, y = 200, 200
 speed, angle = 0, 0
 
 space_ship = pygame.image.load("img/spacecraft.png")
-space_ship = pygame.transform.scale(space_ship, (50, 50))
+space_ship = pygame.transform.scale(space_ship, (100, 100))
 space_ship = pygame.transform.rotate(space_ship, -90)
 space_ship_rect = space_ship.get_rect()
     
@@ -53,11 +53,13 @@ while (run):
     y = y % HEIGHT
 
     space_ship_rotated = pygame.transform.rotate(space_ship, angle=angle)
+    
     space_ship_rect = space_ship.get_rect()
     space_ship_rect.center = x, y
-    
     screen.blit(space_ship_rotated, space_ship_rect)    
+    
     pygame.display.flip()
     clock.tick(FPS)
+
 
 pygame.quit()

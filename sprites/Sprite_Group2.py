@@ -17,12 +17,14 @@ space_ship_img = pygame.image.load("img/spacecraft.png")
 space_ship_img = pygame.transform.scale(space_ship_img, (60, 60))
 space_ship_Group = pygame.sprite.Group()
 
-sun = Sun()
+sun_img = pygame.image.load("img/sun.png")
+sun = Sun(sun_img)
 sun_Group = pygame.sprite.GroupSingle(sun)
 
 for i in range(5):
     for j in range(3):
-        space_ship = SpaceShip(space_ship_img, (100*i,599-j*80)) 
+        space_ship = SpaceShip(space_ship_img)
+        space_ship.rect.midbottom =  100*i,599-j*80 
         space_ship_Group.add(space_ship)
 
 
@@ -49,14 +51,9 @@ while (run):
     
     space_ship_Group.update(speed_x,speed_y)
     space_ship_Group.draw(screen)
-    colisions = pygame.sprite.groupcollide(sun_Group, space_ship_Group, False, True, pygame.sprite.collide_mask )
-    if colisions:
-        for sprite in colisions:
-            print(sprite.rect.center)
 
+    pygame.sprite.groupcollide(sun_Group, space_ship_Group, False, True)
+    
     pygame.display.update()
     clock.tick(FPS)
-
-
-
 

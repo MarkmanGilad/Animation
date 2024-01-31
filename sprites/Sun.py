@@ -2,22 +2,25 @@ import pygame
 from Graphics import *
 
 class Sun (pygame.sprite.Sprite):
-    def __init__(self) -> None:
+    def __init__(self, img) -> None:
         super().__init__()
-        self.image = pygame.image.load("img/sun.png")
+        self.image = img
         self.image = pygame.transform.scale(self.image, (60, 60))
         self.rect = self.image.get_rect(center = (100, 100))
+        self.radius = 20
         self.mask = pygame.mask.from_surface(self.image)
+                
+    def draw (self, surface):
+        surface.blit(self.image, self.rect)
 
-    def update(self):
-        self.move(1,1)
-
-    def move (self, dx, dy):
+    def move (self):
         x, y = self.rect.center
-        x = (x + dx) % WIDTH
-        y = (y + dy) % HEIGHT
+        x = (x + 2) % WIDTH
+        y = (y + 1) % HEIGHT
         self.rect.center = x, y
     
-    
+    def update(self):
+        self.move()
+        
 
         

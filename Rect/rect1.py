@@ -19,11 +19,11 @@ clock = pygame.time.Clock()
 screen.fill(LIGHTGRAY)
 
 x, y = 50, 50
-dx, dy = 1, 1
+dx, dy = 1, -2
 
 space_ship = pygame.image.load("img/spacecraft.png")
-space_ship = pygame.transform.scale(space_ship, (40, 40))
-space_ship_rect = space_ship.get_rect(center=(x, y))
+space_ship = pygame.transform.scale(space_ship, (40, 50))
+space_ship_rect = space_ship.get_rect()
     
 run = True
 while (run):

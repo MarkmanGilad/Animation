@@ -24,8 +24,7 @@ speed_x, speed_y = 1, 1
 rectangle = pygame.Surface((100,80))
 rectangle.fill('red')
 rect = rectangle.get_rect(center = (x,y))
-
-    
+   
 run = True
 while (run):
     for event in pygame.event.get():

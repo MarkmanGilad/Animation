@@ -16,16 +16,16 @@ x, y = 200, 200
 speed, angle = 0, 0
 
 space_ship = pygame.image.load("img/spacecraft.png")
-space_ship = pygame.transform.scale(space_ship, (50, 50))
+space_ship = pygame.transform.scale(space_ship, (80, 80))
 space_ship = pygame.transform.rotate(space_ship, -90)
 space_ship_rect = space_ship.get_rect()
 sun1 = pygame.image.load("img/sun.png")
-sun1 = pygame.transform.scale(sun1, (100, 100))
+sun1 = pygame.transform.scale(sun1, (200, 200))
 sun2 = pygame.image.load("img/sun_1.png")
-sun2 = pygame.transform.scale(sun2, (100, 100))
+sun2 = pygame.transform.scale(sun2, (200, 200))
 
 sun = sun1
-sun_rect = sun.get_rect(center=(700,100))
+sun_rect = sun.get_rect(center=(600,300))
 
 run = True
 while (run):
