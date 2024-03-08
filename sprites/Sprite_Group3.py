@@ -27,7 +27,7 @@ for i in range(5):
         space_ship.rect.midbottom =  100*i,599-j*80 
         space_ship_Group.add(space_ship)
 
-
+go = False
 run = True
 while (run):
     for event in pygame.event.get():
@@ -44,10 +44,13 @@ while (run):
                 speed_y += 1
             if event.key == pygame.K_SPACE:
                 speed_x, speed_y = 0, 0
-
+            if event.key == pygame.K_q:
+                go = True
     screen.fill(LIGHTGRAY)
-    sun_Group.update()
-    sun_Group.draw(screen)
+    
+    if go:
+        sun_Group.update()
+        sun_Group.draw(screen)
     
     space_ship_Group.update(speed_x,speed_y)
     space_ship_Group.draw(screen)

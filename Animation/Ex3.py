@@ -32,7 +32,7 @@ while (run):
                 v += 1
             if event.key == pygame.K_DOWN:
                 v -= 1
-    dx = v * math.cos(math.pi*angle/180)
+    dx = v * math.cos(math.radians(angle))
     dy = v * math.sin(math.pi*angle/180) 
     x = (x + dx) % WIDTH
     y = (y - dy) % HEIGHT
